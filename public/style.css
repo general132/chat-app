@@ -1,58 +1,198 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
+/* Geral */
+* {
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  box-sizing: border-box;
 }
 
-#chat-container {
-  width: 100%;
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fafafa;
+}
+
+#app {
   max-width: 500px;
-  background: white;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  margin: 0 auto;
+  position: relative;
 }
 
-#messages {
-  list-style: none;
-  padding: 0;
-  max-height: 300px;
+/* Barra de Navegação */
+header {
+  background-color: #ffffff;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+#logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+#nav-actions button {
+  background-color: #0095f6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Telas */
+.screen {
+  padding: 20px;
+  text-align: center;
+}
+
+#user-setup h1 {
+  font-size: 28px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="color"] {
+  width: 80%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #0095f6;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+/* Botão Flutuante de Chat */
+#chat-toggle {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #0095f6;
+  color: white;
+  font-size: 24px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Chat */
+#chat-setup {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 320px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  padding: 15px;
+  z-index: 1000;
+}
+
+#messages-container {
+  height: 300px;
   overflow-y: auto;
   margin-bottom: 10px;
 }
 
-#messages li {
-  padding: 8px;
-  border-bottom: 1px solid #eee;
-}
-
-form {
+#messages {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
   display: flex;
+  flex-direction: column; /* Garante que as novas mensagens apareçam no final */
   gap: 5px;
-  flex-wrap: wrap;
 }
 
-input[type="text"] {
-  flex: 1;
+/* Formulário de mensagem */
+#form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#input {
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
+  width: 100%;
 }
 
+/* Input de arquivo estilizado */
 input[type="file"] {
-  flex: 1;
+  display: none;
 }
 
-button {
+label[for="fileInput"] {
+  display: inline-block;
+  padding: 8px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button[type="submit"] {
   padding: 10px;
-  background-color: #4CAF50;
+  background-color: #0095f6;
   color: white;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 4px;
+}
+
+.message {
+  max-width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  word-wrap: break-word;
+  position: relative;
+  margin: 5px;
+  display: flex;  /* Usar inline-block para controlar o tamanho da mensagem */
+  width: auto;  /* Garantir que o fundo acompanhe o tamanho da mensagem */
+}
+
+/* Mensagem enviada (direita) */
+.message.sent {
+  align-self: flex-end;
+  background-color: #dcf8c6;
+  border-radius: 10px 10px 0 10px;
+  margin-left: auto;
+  max-width: 80%;
+  width: fit-content; /* Ajusta a largura para o conteúdo */
+  box-sizing: border-box;
+  padding: 10px 12px; /* Para garantir o preenchimento adequado */
+}
+
+/* Mensagem recebida (esquerda) */
+.message.received {
+  align-self: flex-start;
+  background-color: #ffffff;
+  border-radius: 10px 10px 10px 0;
+  margin-right: auto;
+  max-width: 80%;
+  width: fit-content; /* Ajusta a largura para o conteúdo */
+  box-sizing: border-box;
+  padding: 10px 12px; /* Para garantir o preenchimento adequado */
 }
