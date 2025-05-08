@@ -1,19 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Chat em Tempo Real</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="chat-container">
-    <ul id="messages"></ul>
-    <form id="form">
-      <input id="input" autocomplete="off" placeholder="Digite sua mensagem..." />
-      <button>Enviar</button>
-    </form>
-  </div>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="script.js"></script>
+    <div id="user-setup">
+        <h1>Entre no chat</h1>
+        <label for="username">Nome:</label>
+        <input type="text" id="username" placeholder="Digite seu nome" required>
+        <label for="color-picker">Escolha uma cor:</label>
+        <input type="color" id="color-picker">
+        <button id="join-chat">Entrar no Chat</button>
+    </div>
+
+    <div id="chat-setup" style="display:none;">
+        <ul id="messages"></ul>
+        <form id="form">
+            <input id="input" type="text" placeholder="Digite uma mensagem" autocomplete="off">
+            <input id="fileInput" type="file" accept="image/*, .zip, .rar, .pdf, .txt">
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
