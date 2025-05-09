@@ -188,7 +188,7 @@ button[type="submit"] {
 /* Mensagem recebida (esquerda) */
 .message.received {
   align-self: flex-start;
-  background-color: #ffffff;
+  background-color: #54a516;
   border-radius: 10px 10px 10px 0;
   margin-right: auto;
   max-width: 80%;
